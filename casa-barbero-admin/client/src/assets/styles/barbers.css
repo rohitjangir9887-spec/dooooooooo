@@ -1,0 +1,349 @@
+.availability-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 16px;
+}
+
+.barber-list {
+  display: flex;
+  flex-direction: column;
+  min-height: 640px;
+  padding: 14px;
+}
+
+.barber-list > p {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.barber-list > button:not(.dashed-button) {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 58px;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.035);
+  background: transparent;
+  text-align: left;
+  transition: background 180ms var(--ease-out);
+}
+
+.barber-list > button.selected {
+  background: rgba(201, 168, 76, 0.07);
+}
+
+.barber-list > button.selected::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--gold);
+}
+
+.barber-list em {
+  display: block;
+  color: var(--muted);
+  font-style: normal;
+  font-size: 12px;
+}
+
+.dashed-button {
+  width: 100%;
+  margin-top: auto;
+  border: 1px dashed var(--border);
+  background: transparent;
+  color: var(--muted);
+}
+
+.barber-detail {
+  padding: 0;
+  overflow: hidden;
+}
+
+.barber-header {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 18px 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.barber-header .badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 99px;
+  font-size: 13px;
+}
+
+.barber-header p {
+  margin: 3px 0 0;
+  color: var(--muted);
+}
+
+.barber-detail > .segmented {
+  margin: 12px 20px 8px;
+  border: 0;
+  background: transparent;
+}
+
+.barber-detail > .segmented button {
+  min-width: 120px;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+}
+
+.barber-detail > .segmented button.selected {
+  background: transparent;
+  border-color: var(--gold);
+  color: var(--text);
+}
+
+.hours-grid,
+.block-list,
+.service-grid {
+  padding: 14px 22px 24px;
+}
+
+.hours-grid .service-grid {
+  padding: 0;
+}
+
+.hours-grid header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.hours-grid header button,
+.service-grid button {
+  border: 0;
+  background: transparent;
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.hours-row {
+  display: grid;
+  grid-template-columns: 1fr 70px 4fr;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.035);
+}
+
+.hours-row.head {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+/* Four time fields share one wrapper so they can regroup on mobile */
+.hours-fields {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(100px, 1fr));
+  align-items: center;
+  gap: 12px;
+}
+
+.hours-field {
+  display: grid;
+  gap: 4px;
+}
+
+.hours-field em {
+  display: none;
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.block-list { display: grid; gap: 12px; }
+
+.block-list article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 14px;
+}
+
+.block-list span {
+  display: block;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.block-list article button {
+  min-width: 44px;
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+  color: var(--danger);
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.service-grid article {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 16px;
+}
+
+.service-grid h3 { margin: 0 0 8px; }
+
+.service-grid strong {
+  display: block;
+  color: var(--gold);
+  font-family: var(--font-heading);
+  font-size: 24px;
+}
+
+.service-grid time {
+  color: var(--muted);
+  font-family: var(--font-mono);
+}
+
+.color-swatch-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 4px 0;
+}
+
+.color-swatch {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  cursor: pointer;
+  transition: transform 140ms var(--ease-out), outline-color 150ms;
+}
+
+.color-swatch.active {
+  outline-color: var(--text);
+  transform: scale(1.1);
+}
+
+.add-service-form {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.add-service-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.service-add-btn {
+  margin-top: 16px;
+}
+
+@media (max-width: 1279px) {
+  .availability-layout { grid-template-columns: 1fr; }
+
+  .barber-list { min-height: 0; }
+}
+
+@media (max-width: 767px) {
+  .barber-detail > .segmented button { min-width: 0; }
+
+  .service-grid { grid-template-columns: 1fr; }
+
+  .hours-row {
+    grid-template-columns: 1fr 64px;
+    gap: 8px;
+    padding: 12px 0;
+  }
+
+  .hours-row.head { display: none; }
+
+  .hours-fields {
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 12px;
+  }
+
+  .hours-field em { display: block; }
+}
+
+@media (max-width: 479px) {
+  .add-service-row { grid-template-columns: 1fr; }
+}
+
+/* Editable working-hours time inputs */
+.hours-row input[type="time"] {
+  min-height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #1a1a1a;
+  color: var(--text);
+  padding: 0 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.hours-row input[type="time"]:disabled {
+  opacity: 0.35;
+}
+
+.muted-note {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.inactive-service {
+  opacity: 0.55;
+}
+
+.inactive-tag {
+  color: var(--muted);
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.edit-service-card {
+  grid-column: span 1;
+  display: block !important;
+}
+
+.edit-service-card .modal-actions {
+  margin-top: 10px;
+}
+
+.form-error {
+  color: var(--danger);
+  font-size: 12px;
+}
+
+/* Touch targets: keep after base rules so equal-specificity selectors win */
+@media (pointer: coarse) {
+  .hours-row input[type="time"],
+  .hours-grid header button,
+  .service-grid button {
+    min-height: 44px;
+  }
+}

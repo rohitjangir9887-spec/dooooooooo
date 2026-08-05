@@ -1,0 +1,31 @@
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 12px clamp(20px, 5vw, 56px);
+  background: rgba(201, 146, 42, .08);
+  border-bottom: 1px solid rgba(201, 146, 42, .22);
+  text-align: center;
+}
+
+.icon {
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.text {
+  font-size: 13px;
+  letter-spacing: .02em;
+  color: var(--text-muted);
+}
+
+.phone {
+  font-weight: 700;
+  color: var(--gold);
+  white-space: nowrap;
+  transition: color .2s;
+}
+
+.phone:hover { color: var(--gold-light); }

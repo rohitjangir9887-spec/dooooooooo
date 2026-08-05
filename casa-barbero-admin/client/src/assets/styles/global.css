@@ -1,0 +1,96 @@
+:root {
+  --bg: #1A1A1A;
+  --auth-bg: #141414;
+  --sidebar: #1C1C1C;
+  --card: #242424;
+  --hover: #2E2E2E;
+  --border: #333333;
+  --gold: #C9A84C;
+  --text: #F5F5F0;
+  --muted: #8A8A82;
+  --success: #4CAF7D;
+  --warning: #E5A443;
+  --danger: #E05555;
+  --info: #5B9BD5;
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-ui: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  /* Fluid type + spacing tokens. Breakpoints used app-wide: 479/767/1023/1279 max-width, 1600 min-width */
+  --fs-page-title: clamp(26px, 2.8vw + 16px, 34px);
+  --fs-title-xl: clamp(28px, 2.2vw + 20px, 36px);
+  --fs-kpi: clamp(24px, 2vw + 16px, 36px);
+  --fs-panel-title: clamp(15px, 0.4vw + 13px, 17px);
+  --fs-modal-title: clamp(22px, 1.6vw + 16px, 28px);
+  --fs-drawer-title: clamp(20px, 1.2vw + 16px, 24px);
+  --pad-card: clamp(16px, 1.8vw, 24px);
+  --pad-card-x: clamp(16px, 2.2vw, 28px);
+  --gap-grid: clamp(12px, 1.6vw, 20px);
+  --gap-section: clamp(22px, 3vw, 32px);
+  --content-max: 1480px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 14px;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(201, 168, 76, 0.75);
+  outline-offset: 2px;
+}
+
+/* Shared heading font rule */
+.auth-card h1,
+.page-header h1,
+.modal-card h2,
+.slide-panel h2,
+.barber-header h2 {
+  margin: 0;
+  font-family: var(--font-heading);
+  line-height: 1.06;
+}
+
+.push-right { margin-left: auto; }
+
+.mono {
+  font-family: var(--font-mono);
+  color: var(--muted);
+}
+
+.gold-text { color: var(--gold) !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

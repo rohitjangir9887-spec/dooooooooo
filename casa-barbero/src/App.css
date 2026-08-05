@@ -1,0 +1,28 @@
+.wrapper {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Route-transition loader: breathing brand glyph */
+.page-loader {
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  background: var(--bg);
+}
+
+.page-loader-glyph {
+  font-family: var(--font-serif);
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--gold);
+  animation: loader-breathe 1.4s ease-in-out infinite;
+}
+
+@keyframes loader-breathe {
+  0%, 100% { opacity: 0.35; transform: scale(0.96); }
+  50% { opacity: 1; transform: scale(1); }
+}

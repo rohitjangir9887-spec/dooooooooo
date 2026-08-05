@@ -1,0 +1,29 @@
+.settings-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 16px;
+  margin-bottom: 26px;
+}
+
+.account-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.account-card p { margin: 4px 0 0; }
+
+.account-card button { margin-left: auto; }
+
+@media (max-width: 767px) {
+  .settings-form { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 479px) {
+  .account-card { flex-wrap: wrap; }
+
+  .account-card button {
+    margin-left: 0;
+    width: 100%;
+  }
+}

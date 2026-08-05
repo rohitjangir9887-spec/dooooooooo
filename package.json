@@ -1,0 +1,13 @@
+{
+  "name": "templates-webpage",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently --names \"client,admin\" --prefix-colors \"cyan,yellow\" \"npm run dev --prefix casa-barbero\" \"npm run dev --prefix casa-barbero-admin\"",
+    "dev:client": "npm run dev --prefix casa-barbero",
+    "dev:admin": "npm run dev --prefix casa-barbero-admin"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "casa-barbero-admin",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm:server\" \"npm:client\"",
+    "client": "vite client --host 127.0.0.1",
+    "server": "node backend/src/server.js",
+    "build": "vite build client",
+    "preview": "vite preview client --host 127.0.0.1",
+    "seed": "node backend/scripts/seed.js"
+  },
+  "dependencies": {
+    "@auth/express": "^0.11.0",
+    "@hookform/resolvers": "^5.1.1",
+    "@supabase/supabase-js": "^2.50.2",
+    "chart.js": "^4.4.9",
+    "concurrently": "^9.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "framer-motion": "^12.19.1",
+    "lucide-react": "^0.468.0",
+    "next-auth": "^4.24.11",
+    "react": "^19.1.0",
+    "react-chartjs-2": "^5.3.0",
+    "react-dom": "^19.1.0",
+    "react-hook-form": "^7.58.1",
+    "ws": "^8.18.0",
+    "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.5.2",
+    "vite": "^7.0.0"
+  }
+}

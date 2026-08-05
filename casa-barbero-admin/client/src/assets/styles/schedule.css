@@ -1,0 +1,202 @@
+.controls-bar strong { font-size: clamp(15px, 1.2vw + 12px, 18px); }
+
+.schedule-month {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.month-heading {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.mh-full,
+.mh-short { font-style: normal; }
+
+.mh-short,
+.day-dots { display: none; }
+
+.day-cell {
+  position: relative;
+  min-height: 100px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: #1d1d1d;
+  padding: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.day-cell.out { opacity: 0.28; }
+
+.day-cell > strong {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  font-family: var(--font-mono);
+}
+
+.day-cell > strong span {
+  display: inline-grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  color: var(--gold);
+  font-size: 11px;
+}
+
+.booking-chip {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-height: 23px;
+  margin-bottom: 5px;
+  border-left: 3px solid var(--barber);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--barber) 20%, transparent);
+  padding: 5px 7px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.blocked {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(224, 85, 85, 0.16);
+  color: var(--danger);
+  font-weight: 900;
+}
+
+.more-link {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.week-view {
+  display: grid;
+  grid-template-columns: 72px repeat(var(--cols, 4), minmax(220px, 1fr));
+  height: calc(100dvh - 150px);
+  min-height: 580px;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #1d1d1d;
+}
+
+.time-col,
+.barber-col {
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.time-col {
+  display: grid;
+  grid-template-rows: 60px repeat(13, 58px);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-align: right;
+}
+
+.time-col strong { padding: 12px 10px; text-align: left; }
+
+.time-col span { padding: 8px 10px; }
+
+.barber-col header {
+  display: flex;
+  height: 60px;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+}
+
+.time-grid {
+  position: relative;
+  height: calc(13 * 58px);
+}
+
+.time-grid > span {
+  display: block;
+  height: 58px;
+  border-top: 1px solid rgba(255, 255, 255, 0.035);
+}
+
+.booking-block {
+  position: absolute;
+  right: 10px;
+  left: 10px;
+  display: grid;
+  align-content: center;
+  border-left: 3px solid var(--barber);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--barber) 24%, transparent);
+  padding: 8px;
+  overflow: hidden;
+}
+
+.booking-block svg {
+  position: absolute;
+  left: 5px;
+  top: 7px;
+  color: var(--barber);
+}
+
+.booking-block strong,
+.booking-block span {
+  margin-left: 12px;
+  font-size: 12px;
+}
+
+.booking-block span {
+  color: var(--text);
+  opacity: 0.8;
+  font-size: 11px;
+}
+
+@media (max-width: 767px) {
+  .schedule-month { gap: 3px; }
+  .month-heading { display: block; text-align: center; padding-bottom: 4px; }
+  .mh-full { display: none; }
+  .mh-short { display: inline; }
+  .day-cell { min-height: 48px; padding: 4px 2px; }
+  .day-cell > strong { justify-content: center; margin-bottom: 4px; font-size: 12px; }
+
+  .booking-chip,
+  .more-link { display: none; }
+
+  .day-dots { display: flex; justify-content: center; align-items: center; gap: 3px; }
+  .day-dots i { width: 6px; height: 6px; border-radius: 99px; }
+  .day-dots em { font-size: 9px; font-style: normal; color: var(--muted); line-height: 1; }
+  .blocked { font-size: 0; gap: 0; }
+
+  .week-view {
+    grid-template-columns: 56px repeat(var(--cols, 4), 76vw);
+    height: calc(100dvh - 200px);
+    scroll-snap-type: x proximity;
+    scroll-padding-left: 56px;
+  }
+
+  .time-col { position: sticky; left: 0; z-index: 2; background: #1d1d1d; }
+
+  .barber-col { scroll-snap-align: start; }
+}
+
+/* Current-day highlight */
+.day-cell.today {
+  border-color: rgba(201, 168, 76, 0.55);
+  background: rgba(201, 168, 76, 0.05);
+}
+
+.day-cell.today > strong {
+  color: var(--gold);
+}

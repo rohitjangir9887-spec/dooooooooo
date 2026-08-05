@@ -1,0 +1,91 @@
+.payment-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap-grid);
+  margin-bottom: 28px;
+}
+
+.payments-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
+  gap: var(--gap-grid);
+  margin-bottom: 28px;
+}
+
+.payments-grid .panel { min-height: 275px; }
+
+.payments-grid canvas { height: 150px !important; }
+
+.top-services { display: grid; gap: 17px; }
+
+.top-services article div {
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.top-services span,
+.top-services em {
+  color: var(--muted);
+  font-style: normal;
+  font-weight: 800;
+}
+
+.top-services em {
+  color: var(--gold);
+  font-family: var(--font-heading);
+}
+
+.top-services article > i {
+  display: block;
+  height: 6px;
+  border-radius: 99px;
+  background: var(--gold);
+}
+
+.transaction-panel { padding: 0; }
+
+.transaction-panel .panel-title {
+  margin: 0;
+  padding: 18px 20px 14px;
+}
+
+.transaction-panel .table-wrap {
+  border: 0;
+  border-radius: 0;
+}
+
+/* Scoped so it neither leaks to other pages nor beats the mobile stacked-card reset */
+@media (min-width: 768px) {
+  .page-payments .compact { min-width: 900px; }
+}
+
+@keyframes kpi-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.payment-kpis .kpi-card { animation: kpi-in 300ms var(--ease-out) both; }
+
+.payment-kpis .kpi-card:nth-child(1) { animation-delay: 0ms; }
+.payment-kpis .kpi-card:nth-child(2) { animation-delay: 55ms; }
+.payment-kpis .kpi-card:nth-child(3) { animation-delay: 110ms; }
+
+@media (max-width: 1279px) {
+  .payments-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 1023px) {
+  .payment-kpis .kpi-card { padding: 18px; }
+}
+
+@media (max-width: 767px) {
+  .payment-kpis { grid-template-columns: 1fr; }
+}
+
+/* Wrap the 4-option period control into a 2x2 grid on narrow phones */
+@media (max-width: 479px) {
+  .page-payments .header-actions .segmented { flex-wrap: wrap; height: auto; padding: 3px; }
+  .page-payments .header-actions .segmented button { flex: 1 1 45%; }
+}

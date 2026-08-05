@@ -1,0 +1,785 @@
+/* ── Page shell ─────────────────────────────────────── */
+.page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+/* ── Header ─────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px clamp(20px, 5vw, 56px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(13, 10, 7, .95);
+  backdrop-filter: blur(12px);
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: clamp(18px, 3vw, 22px);
+  font-weight: 600;
+  color: var(--heading);
+}
+
+.logoAccent {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.back {
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color .2s;
+}
+.back:hover { color: var(--gold); }
+
+.login {
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 7px 14px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  transition: color .2s, border-color .2s;
+}
+.login:hover {
+  color: var(--gold);
+  border-color: rgba(201, 146, 42, .35);
+}
+
+/* ── Progress stepper ───────────────────────────────── */
+.progress {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 28px clamp(20px, 5vw, 40px) 0;
+  gap: 0;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.stepItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  position: relative;
+}
+
+.stepLine {
+  position: absolute;
+  top: 15px;
+  left: calc(50% + 16px);
+  right: calc(-50% + 16px);
+  height: 1px;
+  background: var(--border);
+  transition: background .4s;
+}
+
+.stepDone .stepLine,
+.stepActive .stepLine {
+  background: rgba(201, 146, 42, .35);
+}
+
+.stepCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .12);
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-faint);
+  position: relative;
+  z-index: 1;
+  transition: background .3s, border-color .3s, color .3s;
+}
+
+.stepActive .stepCircle {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #140c03;
+}
+
+.stepDone .stepCircle {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.stepLabel {
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  transition: color .3s;
+  white-space: nowrap;
+}
+
+.stepActive .stepLabel,
+.stepDone .stepLabel {
+  color: var(--text-muted);
+}
+
+/* ── Main content ───────────────────────────────────── */
+.main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px clamp(20px, 5vw, 40px) 80px;
+}
+
+/* ── Panel (each step lives inside one) ─────────────── */
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.panelTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 600;
+  color: var(--heading);
+  line-height: 1.1;
+  margin-top: -8px;
+}
+
+.panelSub {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: -16px;
+  line-height: 1.7;
+}
+
+/* ── Service cards ──────────────────────────────────── */
+.serviceGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.serviceCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 18px 16px;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .2s, background .2s, transform .2s;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.serviceCard:hover {
+  border-color: rgba(201, 146, 42, .35);
+  background: var(--bg-card-hover);
+  transform: translateY(-1px);
+}
+
+.serviceCard.selected {
+  border-color: var(--gold);
+  background: rgba(201, 146, 42, .06);
+}
+
+.scTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.scName {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--heading);
+}
+
+.scPrice {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.scDesc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.scDuration {
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 3px 8px;
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  align-self: flex-start;
+}
+
+/* ── Selected service chip (step 2) ─────────────────── */
+.serviceChip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(201, 146, 42, .06);
+  border: 1px solid rgba(201, 146, 42, .22);
+  border-radius: 4px;
+  margin-top: -8px;
+}
+
+.serviceChipName {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--heading);
+}
+
+.serviceChipMeta {
+  font-size: 12px;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+/* ── Fieldset (barber / date / time sections) ───────── */
+.fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fieldLegend {
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* Required / Optional inline badges */
+.tagRequired {
+  font-size: 8px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #e07575;
+  background: rgba(224, 117, 117, .1);
+  border: 1px solid rgba(224, 117, 117, .22);
+  border-radius: 3px;
+  padding: 1px 5px;
+  line-height: 1.6;
+}
+
+.tagOptional {
+  font-size: 8px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  background: rgba(255, 255, 255, .04);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1px 5px;
+  line-height: 1.6;
+}
+
+/* Save info checkbox row */
+.saveRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  margin-top: -6px;
+}
+
+.saveCheck {
+  width: 14px;
+  height: 14px;
+  accent-color: var(--gold);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.saveLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+  user-select: none;
+  line-height: 1.4;
+}
+
+/* ── Barber cards ───────────────────────────────────── */
+.barberGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
+  gap: 12px;
+}
+
+.barberCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  min-height: 116px;
+  width: 100%;
+  padding: 16px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+}
+
+.barberCard:hover {
+  border-color: rgba(201, 146, 42, .35);
+  background: var(--bg-card-hover);
+}
+
+.barberCard.selected {
+  border-color: var(--gold);
+  background: rgba(201, 146, 42, .06);
+}
+
+.barberAvatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(200, 92, 40, .15);
+  border: 1px solid rgba(200, 92, 40, .3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.barberName {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--heading);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+/* ── Date grid ──────────────────────────────────────── */
+.dateGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.dateCard {
+  padding: 10px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: border-color .2s, color .2s, background .2s;
+  text-align: center;
+}
+
+.dateCard:hover {
+  border-color: rgba(201, 146, 42, .3);
+  color: var(--text);
+}
+
+.dateCard.selected {
+  border-color: var(--gold);
+  background: rgba(201, 146, 42, .08);
+  color: var(--heading);
+  font-weight: 600;
+}
+
+/* ── Time grid ──────────────────────────────────────── */
+.timeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 8px;
+}
+
+.timeCard {
+  padding: 10px 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 13px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: border-color .2s, color .2s, background .2s;
+  text-align: center;
+}
+
+.timeCard:hover {
+  border-color: rgba(201, 146, 42, .3);
+  color: var(--text);
+}
+
+.timeCard.selected {
+  border-color: var(--gold);
+  background: rgba(201, 146, 42, .08);
+  color: var(--heading);
+  font-weight: 600;
+}
+
+.loadingTag {
+  font-size: 10px;
+  color: var(--text-faint);
+  letter-spacing: .06em;
+  font-style: italic;
+}
+
+.noSlots {
+  font-size: 13px;
+  color: var(--text-faint);
+  font-style: italic;
+}
+
+/* ── Booking summary box ────────────────────────────── */
+.summaryBox {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.sRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--border);
+  gap: 16px;
+}
+
+.sRow:last-child { border-bottom: none; }
+
+.sLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  flex-shrink: 0;
+}
+
+.sValue {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--heading);
+  text-align: right;
+}
+
+.sMono {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: .08em;
+  color: var(--gold);
+}
+
+.sTotal .sLabel { color: var(--text-dim); font-weight: 600; }
+.sTotal .sValue { color: var(--gold); font-size: 16px; }
+
+/* ── Form fields ────────────────────────────────────── */
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldLabel {
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.input {
+  background: rgba(255, 255, 255, .03);
+  border: none;
+  border-bottom: 1px solid rgba(236, 228, 216, .18);
+  color: var(--text);
+  font-size: 15px;
+  padding: 12px 4px;
+  outline: none;
+  width: 100%;
+  transition: border-color .25s, background .25s;
+  border-radius: 0;
+}
+
+.input::placeholder { color: #5e5750; }
+
+.input:focus {
+  border-bottom-color: rgba(201, 146, 42, .55);
+  background: rgba(201, 146, 42, .025);
+}
+
+/* 3-column row for MM / YY / CVC */
+.row3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+/* ── Test card panel ────────────────────────────────── */
+.testBox {
+  background: rgba(201, 146, 42, .05);
+  border: 1px solid rgba(201, 146, 42, .2);
+  border-radius: 6px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.testTitle {
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.testCards {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.testCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  background: rgba(201, 146, 42, .05);
+  border: 1px solid rgba(201, 146, 42, .15);
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color .2s, background .2s;
+  flex-wrap: wrap;
+}
+
+.testCard:hover {
+  border-color: rgba(201, 146, 42, .4);
+  background: rgba(201, 146, 42, .1);
+}
+
+.testLabel {
+  font-size: 11px;
+  color: var(--text-muted);
+  flex: 1;
+}
+
+.testNum {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--gold);
+  letter-spacing: .06em;
+}
+
+.testFill {
+  font-size: 10px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: .06em;
+  flex-shrink: 0;
+}
+
+/* ── Navigation row ─────────────────────────────────── */
+.navRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+/* Paired pay buttons (counter vs online) on the details step */
+.payChoice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ── Buttons ────────────────────────────────────────── */
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  background: var(--gold);
+  color: #140c03;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(201, 146, 42, .3);
+  transition: opacity .2s, transform .2s, box-shadow .2s;
+  text-decoration: none;
+}
+
+.btnPrimary:hover:not(:disabled) {
+  opacity: .9;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px rgba(201, 146, 42, .4);
+}
+
+.btnPrimary:disabled {
+  opacity: .35;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 13px 20px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: color .2s, border-color .2s;
+}
+
+.btnGhost:hover:not(:disabled) {
+  color: var(--text);
+  border-color: rgba(255, 255, 255, .2);
+}
+
+.btnGhost:disabled {
+  opacity: .3;
+  cursor: not-allowed;
+}
+
+/* ── Status messages ────────────────────────────────── */
+.errorMsg {
+  font-size: 13px;
+  color: #e56b6b;
+  background: rgba(229, 107, 107, .08);
+  border: 1px solid rgba(229, 107, 107, .2);
+  border-radius: 4px;
+  padding: 10px 14px;
+  line-height: 1.5;
+}
+
+.waitMsg {
+  font-size: 13px;
+  color: var(--gold);
+  background: rgba(201, 146, 42, .06);
+  border: 1px solid rgba(201, 146, 42, .2);
+  border-radius: 4px;
+  padding: 10px 14px;
+  line-height: 1.5;
+}
+
+.secureNote {
+  font-size: 11px;
+  color: var(--text-faint);
+  text-align: center;
+  letter-spacing: .04em;
+}
+
+/* ── Confirmation (step 5) ──────────────────────────── */
+.confirmPanel {
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+
+.confirmPanel .summaryBox {
+  width: 100%;
+  text-align: left;
+}
+
+.confirmIcon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(45, 160, 80, .12);
+  border: 1px solid rgba(45, 160, 80, .3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #4caf73;
+}
+
+.confirmNote {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.confirmNote strong { color: var(--text); }
+
+.confirmActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 520px) {
+  .serviceGrid { grid-template-columns: 1fr; }
+  .row3        { grid-template-columns: 1fr 1fr; }
+  .stepLabel   { display: none; }
+
+  .progress {
+    padding-top: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .navRow { flex-direction: column-reverse; align-items: stretch; }
+  .payChoice { flex-direction: column-reverse; gap: 10px; }
+  .btnPrimary, .btnGhost { justify-content: center; }
+}

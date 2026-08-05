@@ -1,0 +1,28 @@
+version: 1
+applications:
+  - appRoot: casa-barbero
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - npm install
+        build:
+          commands:
+            - npm run build
+      artifacts:
+        baseDirectory: dist
+        files:
+          - '**/*'
+  - appRoot: casa-barbero-admin
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - npm install
+        build:
+          commands:
+            - npm run build
+      artifacts:
+        baseDirectory: client/dist
+        files:
+          - '**/*'

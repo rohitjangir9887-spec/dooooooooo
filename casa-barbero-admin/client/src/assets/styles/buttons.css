@@ -1,0 +1,115 @@
+.gold-button,
+.outline-gold,
+.ghost-button,
+.ghost-danger,
+.danger-outline,
+.danger-button,
+.dashed-button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 7px;
+  padding: 0 16px;
+  font-weight: 800;
+  transition: background 180ms var(--ease-out), border-color 160ms, color 140ms, opacity 150ms, transform 140ms var(--ease-out);
+}
+
+.gold-button {
+  border: 1px solid var(--gold);
+  background: var(--gold);
+  color: #111;
+}
+
+.gold-button.full { width: 100%; }
+
+.gold-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gold-button:hover { opacity: 0.88; }
+  .outline-gold:hover { background: rgba(201, 168, 76, 0.08); }
+  .ghost-button:hover { background: var(--hover); }
+}
+
+.gold-button:active,
+.outline-gold:active,
+.ghost-button:active,
+.ghost-danger:active,
+.danger-outline:active,
+.danger-button:active,
+.dashed-button:active {
+  transform: scale(0.97);
+}
+
+.outline-gold {
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+}
+
+.ghost-button {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+}
+
+.ghost-button.small {
+  min-height: 34px;
+  font-size: 12px;
+}
+
+.ghost-danger,
+.danger-outline {
+  border: 1px solid rgba(224, 85, 85, 0.35);
+  background: transparent;
+  color: var(--danger);
+}
+
+.danger-button {
+  border: 1px solid var(--danger);
+  background: var(--danger);
+  color: #fff;
+}
+
+.text-link,
+.back-link,
+.danger-text {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+}
+
+.text-link {
+  display: block;
+  margin: 18px auto 0;
+}
+
+.back-link { color: var(--gold); }
+
+.danger-text {
+  color: var(--danger);
+  font-weight: 800;
+}
+
+/* Tactile press feedback on all action buttons */
+.gold-button:active,
+.ghost-button:active,
+.outline-gold:active,
+.danger-button:active,
+.danger-outline:active,
+.icon-btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Touch-friendly hit areas */
+@media (pointer: coarse) {
+  .ghost-button.small,
+  .text-link,
+  .danger-text {
+    min-height: 44px;
+  }
+}

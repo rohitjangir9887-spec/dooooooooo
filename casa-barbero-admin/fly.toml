@@ -1,0 +1,29 @@
+# Fly.io configuration for Casa Barbero Admin API
+# https://fly.io/docs/reference/configuration/
+
+app = "casa-barbero-admin-api"
+primary_region = "sin"  # Singapore (close to Philippines)
+
+[build]
+  dockerfile = "backend/Dockerfile"
+
+[env]
+  PORT = "8080"
+
+[[services]]
+  internal_port = 8080
+  processes = ["app"]
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+    force_https = true
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+
+  [services.tcp_checks]
+    interval = 10000
+    timeout = 2000
+    grace_period = "5s"

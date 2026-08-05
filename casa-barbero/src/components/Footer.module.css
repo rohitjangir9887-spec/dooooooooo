@@ -1,0 +1,130 @@
+.footer {
+  padding: clamp(64px, 8vw, 96px) clamp(20px, 5vw, 56px) clamp(32px, 4vw, 40px);
+  background: var(--bg-dark);
+  border-top: 1px solid var(--border);
+}
+
+.inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.1fr;
+  gap: clamp(32px, 5vw, 56px);
+  margin-bottom: clamp(48px, 6vw, 64px);
+}
+
+.brand {}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.logoAccent {
+  font-style: italic;
+}
+
+.tagline {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-faint);
+  margin-top: 16px;
+  max-width: 240px;
+}
+
+.socials {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.social {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(236,228,216,.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  transition: border-color .2s, color .2s, background .2s;
+}
+
+.social:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201,146,42,.08);
+}
+
+.colLabel {
+  font-size: 10px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.colLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.colLink {
+  font-size: 14px;
+  color: var(--text-footer);
+  transition: color .2s;
+}
+
+.colLink:hover { color: var(--text-dim); }
+
+.location { font-style: normal; }
+
+.locationText {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-faint);
+  margin-bottom: 14px;
+}
+
+.locationText a {
+  color: var(--text-dim);
+  transition: color .2s;
+}
+
+.locationText a:hover { color: var(--gold); }
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.copy {
+  font-size: 12px;
+  color: #4e4840;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+  .brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 480px) {
+  .grid { grid-template-columns: 1fr; }
+  .bottom { flex-direction: column; align-items: flex-start; gap: 6px; }
+}
