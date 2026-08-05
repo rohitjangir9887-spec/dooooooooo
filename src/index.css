@@ -1,0 +1,40 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-neutral-950: #0a0a0a;
+}
+
+@layer utilities {
+  .pattern-checkerboard {
+    background-image: linear-gradient(45deg, #e5e5e5 25%, transparent 25%),
+      linear-gradient(-45deg, #e5e5e5 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #e5e5e5 75%),
+      linear-gradient(-45deg, transparent 75%, #e5e5e5 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  }
+  
+  .dark .pattern-checkerboard {
+    background-image: linear-gradient(45deg, #171717 25%, transparent 25%),
+      linear-gradient(-45deg, #171717 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #171717 75%),
+      linear-gradient(-45deg, transparent 75%, #171717 75%);
+  }
+}
+
+@layer base {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-300 dark:bg-neutral-800 rounded-full border-2 border-solid border-transparent bg-clip-padding;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-400 dark:bg-neutral-700;
+  }
+}
