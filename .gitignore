@@ -1,59 +1,30 @@
-# Dependencies
 node_modules/
-
-# Environment variables
-.env
-.env.*
-!.env.example
-
-# Build output
-dist/
-dist-ssr/
-build/
+node_modules
 out/
-.next/
-client/dist/
-
-# Vite / tooling cache
-.vite/
-.vite-temp/
-*.local
-
-# Logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-logs/
-
-# Secrets & credentials
-.env.local
-.env.*.local
-client_secret.json
-token.json
-backend/token.json
-
-# Editor
-.vscode/*
-!.vscode/extensions.json
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# OS
+dist/
 .DS_Store
-Thumbs.db
-casa-barbero-admin/node_modules
-casa-barbero-admin/dist
+*.log
+.vite/
+.env
+.env.local
+.env.signing
+.gstack/
 
-casa-barbero-admin/node_modules/
-casa-barbero-admin/dist/
+# signing / notarization secrets — NEVER commit these
+*.p8
+*.p12
+*.cer
+*.mobileprovision
+build/AuthKey_*.p8
 
-casa-barbero-admin/.env
+# heavy hero source — only the compressed hero.mp4/.webm are deployed
+docs/media/*.mov
 
-.claude
+# git worktree mounts for hive worker agents — never commit (each is a separate branch checkout)
+.worktrees/
+
+# raw demo screen recordings — only the compressed docs/media/demo/*.mp4 are deployed
+docs/media/MunderDifflin*.mp4
+
+# blog theme previews (local only)
+docs/blog-preview-*/
